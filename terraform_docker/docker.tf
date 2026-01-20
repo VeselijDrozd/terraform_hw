@@ -12,13 +12,12 @@ terraform {
 }
 
 provider "docker" {
-# Для использования без docker context
-/*  host = "ssh://${var.vm_user}@${local.vm_ip}:${var.ssh_port}"
+  host = "ssh://${var.vm_user}@${local.vm_ip}:${var.ssh_port}"
   ssh_opts = [
     "-o", "StrictHostKeyChecking=no",
     "-o", "UserKnownHostsFile=/dev/null",
     "-i", var.ssh_privkey_path
-  ] */
+  ]
 }
 
  # Берем инфу из другого корня.

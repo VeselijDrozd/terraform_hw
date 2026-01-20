@@ -66,15 +66,6 @@ deploy() {
     # Даем время на полную загрузку ВМ
     sleep 40
     
-    # Шаг 2: Создание Docker Context
-    log_info "🐳 Этап 2: Создание Docker Context..."
-    
-    # Проверяем, существует ли контекст
-    if docker context ls | grep -q "yc-vm"; then
-        log_warn "Docker Context 'yc-vm' уже существует. Обновляю..."
-        docker context rm yc-vm -f
-    fi
-    
     # Создаем новый контекст
     docker context create yc-vm --docker "host=ssh://${VM_USER}@${VM_IP}:${SSH_PORT}"
     docker context use yc-vm
